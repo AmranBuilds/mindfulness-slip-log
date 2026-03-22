@@ -199,7 +199,6 @@ function renderChart(data) {
             }
         }
     });
-}
 
 // Initial load
 updateDashboard();
