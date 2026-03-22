@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindful Lapse Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <main id="dashboard">
+        <header>
+            <h1>Mindfulness Slip Log</h1>
+            <button id="downloadCsvBtn">Download Backup (CSV)</button>
+        </header>
+
+        <section id="filters">
+            <select id="timeFilter">
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+                <option value="year">This Year</option>
+            </select>
+            
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="Speaking">Speaking</option>
+                <option value="Reading">Reading</option>
+                <option value="Listening">Listening</option>
+                <option value="Task Focus">Task Focus</option>
+                <option value="Memory">Memory</option>
+                <option value="Other">Other</option>
+            </select>
+        </section>
+
+        <section id="metrics">
+            <h2>Total Slips: <span id="totalSlipsCount">0</span></h2>
+            <div class="chart-container">
+                <canvas id="slipChart"></canvas>
+            </div>
+        </section>
+
+        <section id="raw-data-section">
+            <button id="toggleDataBtn">View Raw Entries</button>
+            <div id="rawDataContainer" class="hidden">
+                </div>
+        </section>
+    </main>
+
+    <div id="entryFormModal" class="hidden">
+        <div class="modal-content">
+            <h2>Log a Focus Slip</h2>
+            
+            <label for="slipDate">Date</label>
+            <input type="date" id="slipDate" required>
+
+            <label for="slipCategory">Slip Category</label>
+            <select id="slipCategory" required>
+                <option value="" disabled selected>Select a category...</option>
+                <option value="Speaking">Speaking</option>
+                <option value="Reading">Reading</option>
+                <option value="Listening">Listening</option>
+                <option value="Task Focus">Task Focus</option>
+                <option value="Memory">Memory</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="slipSituation">The Situation</label>
+            <textarea id="slipSituation" rows="3" placeholder="Tap mic on keyboard to dictate..."></textarea>
+
+            <label for="slipConsequences">Consequences</label>
+            <textarea id="slipConsequences" rows="3" placeholder="Tap mic on keyboard to dictate..."></textarea>
+
+            <div class="form-actions">
+                <button id="cancelEntryBtn">Cancel</button>
+                <button id="saveEntryBtn">Save Entry</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="fab" aria-label="Add new entry">+</button>
+
+    <script src="app.js"></script>
+</body>
+</html>
